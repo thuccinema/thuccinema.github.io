@@ -1,12 +1,432 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>THUCCINE</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #050505;
+      color: #f5f5f5;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(5, 5, 5, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      opacity: 0.7;
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.82;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      opacity: 1;
+    }
+
+    .hero {
+      padding: 90px 0 60px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.03), transparent),
+        radial-gradient(circle at top, rgba(255,255,255,0.08), transparent 40%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-main,
+    .hero-side {
+      border: 1px solid rgba(255,255,255,0.1);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      padding: 30px;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 6px 12px;
+      border: 1px solid rgba(255,255,255,0.16);
+      font-size: 0.78rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #d8d8d8;
+    }
+
+    .hero-main h1 {
+      font-size: clamp(2.2rem, 4vw, 4.5rem);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .hero-main p {
+      max-width: 680px;
+      color: #d0d0d0;
+      font-size: 1.06rem;
+      margin-bottom: 26px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      border: 1px solid rgba(255,255,255,0.18);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.85rem;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      background: #f5f5f5;
+      color: #050505;
+    }
+
+    .hero-side h2 {
+      font-size: 1.45rem;
+      margin-bottom: 12px;
+    }
+
+    .hero-side p {
+      color: #d0d0d0;
+      margin-bottom: 16px;
+    }
+
+    section {
+      padding: 64px 0;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 26px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 14px;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+
+    .section-title p {
+      color: #b9b9b9;
+      font-size: 0.95rem;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      border: 1px solid rgba(255,255,255,0.1);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      padding: 24px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.25);
+    }
+
+    .card small {
+      display: block;
+      color: #b3b3b3;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      font-size: 0.72rem;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .card p {
+      color: #cfcfcf;
+      font-size: 0.97rem;
+      margin-bottom: 14px;
+    }
+
+    .card a {
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.88;
+    }
+
+    .highlight {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .highlight-box {
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 28px;
+      min-height: 220px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+    }
+
+    .highlight-box h3 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+
+    .highlight-box p {
+      color: #cccccc;
+      margin-bottom: 16px;
+    }
+
+    .about {
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 32px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .about h2 {
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+
+    .about p {
+      color: #d0d0d0;
+      max-width: 820px;
+    }
+
+    footer {
+      padding: 28px 0 50px;
+      color: #9f9f9f;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .reviews-grid,
+      .highlight {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero {
+        padding-top: 60px;
+      }
+
+      .hero-main,
+      .hero-side,
+      .card,
+      .highlight-box,
+      .about {
+        padding: 22px;
+      }
+
+      .logo {
+        font-size: 1.65rem;
+      }
+
+      .section-title h2,
+      .about h2 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
 </head>
-<body style="background:black;color:white;font-family:Georgia,serif;text-align:center;padding:60px;">
-  <h1>THUCCINE</h1>
-  <p>Meu portal de críticas de cinema.</p>
+<body>
+  <header>
+    <div class="container topbar">
+      <a href="#" class="logo">THU<span>CCINE</span></a>
+      <nav>
+        <a href="#inicio">Início</a>
+        <a href="#criticas">Críticas</a>
+        <a href="#destaques">Destaques</a>
+        <a href="#sobre">Sobre</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-main">
+          <span class="tag">Portal de cinema</span>
+          <h1>Críticas com identidade, estética e paixão por cinema.</h1>
+          <p>
+            O THUCCINE reúne críticas, estreias e destaques do cinema com um olhar mais autoral,
+            cinematográfico e direto. Um espaço para falar de filmes com estilo e personalidade.
+          </p>
+          <a href="#criticas" class="button">Ver críticas</a>
+        </div>
+
+        <div class="hero-side">
+          <span class="tag">Em destaque</span>
+          <h2>Super Mario Galaxy: O Filme</h2>
+          <p>
+            Uma sequência que amplia a aventura, aposta no espetáculo e transforma nostalgia em um dos seus maiores trunfos.
+          </p>
+          <a href="#" class="button">Ler crítica</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="criticas">
+      <div class="container">
+        <div class="section-title">
+          <h2>Críticas recentes</h2>
+          <p>Seus textos, análises e impressões sobre os lançamentos.</p>
+        </div>
+
+        <div class="reviews-grid">
+          <article class="card">
+            <small>Crítica</small>
+            <h3>Super Mario Galaxy: O Filme</h3>
+            <p>
+              Uma continuação que se sobressai em escala, referências e energia, transformando a experiência em puro encanto nostálgico.
+            </p>
+            <a href="#">Ler mais</a>
+          </article>
+
+          <article class="card">
+            <small>Crítica</small>
+            <h3>Casamento Sangrento 2: A Viúva</h3>
+            <p>
+              Mais brutal, mais intenso e mais caótico, ainda que tropece em conflitos repetitivos e algumas incoerências.
+            </p>
+            <a href="#">Ler mais</a>
+          </article>
+
+          <article class="card">
+            <small>Especial</small>
+            <h3>Estreias de Abril nos Cinemas</h3>
+            <p>
+              Um panorama dos lançamentos mais aguardados do mês, entre continuações gigantes e produções nacionais.
+            </p>
+            <a href="#">Ler mais</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="destaques">
+      <div class="container">
+        <div class="section-title">
+          <h2>Destaques</h2>
+          <p>Espaço para matérias, listas e conteúdos especiais.</p>
+        </div>
+
+        <div class="highlight">
+          <div class="highlight-box">
+            <span class="tag">Especial</span>
+            <h3>Os filmes mais aguardados do ano</h3>
+            <p>
+              Uma seleção com os títulos que mais prometem movimentar os cinemas, do blockbuster ao drama prestigiado.
+            </p>
+            <a href="#" class="button">Abrir matéria</a>
+          </div>
+
+          <div class="highlight-box">
+            <span class="tag">Lista</span>
+            <h3>5 continuações que prometem dominar as conversas</h3>
+            <p>
+              Sequências, retornos e franquias que chegam cercadas de expectativa e podem definir o ano no cinema.
+            </p>
+            <a href="#" class="button">Ver lista</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="container">
+        <div class="about">
+          <h2>Sobre o THUCCINE</h2>
+          <p>
+            O THUCCINE nasceu para ser mais do que um perfil sobre filmes: a ideia é construir um portal com identidade própria,
+            misturando crítica, estética e paixão pelo cinema. Aqui, cada texto busca transmitir opinião, atmosfera e personalidade.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 THUCCINE — Portal de críticas de cinema.
+    </div>
+  </footer>
 </body>
 </html>
