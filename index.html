@@ -28,14 +28,14 @@
     }
 
     .container {
-      width: min(1120px, 92%);
+      width: min(1180px, 92%);
       margin: 0 auto;
     }
 
     header {
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 20;
       background: rgba(5, 5, 5, 0.92);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -111,13 +111,13 @@
     }
 
     .hero-main h1 {
-      font-size: clamp(2.2rem, 4vw, 4.5rem);
+      font-size: clamp(2.2rem, 4vw, 4.6rem);
       line-height: 1.05;
       margin-bottom: 18px;
     }
 
     .hero-main p {
-      max-width: 680px;
+      max-width: 720px;
       color: #d0d0d0;
       font-size: 1.06rem;
       margin-bottom: 26px;
@@ -139,13 +139,14 @@
     }
 
     .hero-side h2 {
-      font-size: 1.45rem;
+      font-size: 1.5rem;
       margin-bottom: 12px;
+      line-height: 1.2;
     }
 
     .hero-side p {
       color: #d0d0d0;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     section {
@@ -200,7 +201,7 @@
     }
 
     .card h3 {
-      font-size: 1.3rem;
+      font-size: 1.28rem;
       margin-bottom: 12px;
       line-height: 1.2;
     }
@@ -218,29 +219,6 @@
       opacity: 0.88;
     }
 
-    .highlight {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-    }
-
-    .highlight-box {
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 28px;
-      min-height: 220px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
-    }
-
-    .highlight-box h3 {
-      font-size: 1.6rem;
-      margin-bottom: 10px;
-    }
-
-    .highlight-box p {
-      color: #cccccc;
-      margin-bottom: 16px;
-    }
-
     .about {
       border: 1px solid rgba(255,255,255,0.08);
       padding: 32px;
@@ -254,7 +232,7 @@
 
     .about p {
       color: #d0d0d0;
-      max-width: 820px;
+      max-width: 850px;
     }
 
     footer {
@@ -265,10 +243,9 @@
       font-size: 0.95rem;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 980px) {
       .hero-grid,
-      .reviews-grid,
-      .highlight {
+      .reviews-grid {
         grid-template-columns: 1fr;
       }
 
@@ -290,7 +267,6 @@
       .hero-main,
       .hero-side,
       .card,
-      .highlight-box,
       .about {
         padding: 22px;
       }
@@ -312,8 +288,8 @@
       <a href="#" class="logo">THU<span>CCINE</span></a>
       <nav>
         <a href="#inicio">Início</a>
-        <a href="#criticas">Críticas</a>
-        <a href="#destaques">Destaques</a>
+        <a href="#recentes">Recentes</a>
+        <a href="#arquivo">Arquivo</a>
         <a href="#sobre">Sobre</a>
       </nav>
     </div>
@@ -326,86 +302,134 @@
           <span class="tag">Portal de cinema</span>
           <h1>Críticas com identidade, estética e paixão por cinema.</h1>
           <p>
-            O THUCCINE reúne críticas, estreias e destaques do cinema com um olhar mais autoral,
-            cinematográfico e direto. Um espaço para falar de filmes com estilo e personalidade.
+            O THUCCINE reúne críticas de filmes, estreias e impressões autorais em um espaço
+            pensado para acompanhar os lançamentos e transformar cada texto em parte de um
+            portal vivo, organizado e com personalidade.
           </p>
-          <a href="#criticas" class="button">Ver críticas</a>
+          <a href="#recentes" class="button">Ver críticas mais recentes</a>
         </div>
 
         <div class="hero-side">
-          <span class="tag">Em destaque</span>
+          <span class="tag">Lançamento mais recente</span>
           <h2>Super Mario Galaxy: O Filme</h2>
           <p>
-            Uma sequência que amplia a aventura, aposta no espetáculo e transforma nostalgia em um dos seus maiores trunfos.
+            Uma sequência que amplia a aventura, aposta no espetáculo e transforma nostalgia em
+            um dos seus maiores trunfos.
           </p>
           <a href="super-mario-galaxy.html" class="button">Ler crítica</a>
         </div>
       </div>
     </section>
 
-    <section id="criticas">
+    <section id="recentes">
       <div class="container">
         <div class="section-title">
-          <h2>Críticas recentes</h2>
-          <p>Seus textos, análises e impressões sobre os lançamentos.</p>
+          <h2>Críticas mais recentes</h2>
+          <p>Os lançamentos mais novos aparecem primeiro.</p>
         </div>
 
         <div class="reviews-grid">
           <article class="card">
             <small>Crítica</small>
             <h3>Super Mario Galaxy: O Filme</h3>
-            <p>
-              Uma continuação que se sobressai em escala, referências e energia, transformando a experiência em puro encanto nostálgico.
-            </p>
+            <p>Uma continuação que cresce em escala, nostalgia e energia, transformando a aventura em puro espetáculo.</p>
             <a href="super-mario-galaxy.html">Ler mais</a>
           </article>
 
           <article class="card">
             <small>Crítica</small>
-            <h3>Casamento Sangrento 2: A Viúva</h3>
-            <p>
-              Mais brutal, mais intenso e mais caótico, ainda que tropece em conflitos repetitivos e algumas incoerências.
-            </p>
-            <a href="casamento-sangrento-2.html">Ler mais</a>
+            <h3>Nuremberg</h3>
+            <p>Um tribunal transformado em campo de batalha moral, sustentado por tensão, palavras e responsabilidade histórica.</p>
+            <a href="nuremberg.html">Ler mais</a>
           </article>
 
           <article class="card">
-            <small>Especial</small>
-            <h3>Estreias de Abril nos Cinemas</h3>
-            <p>
-              Um panorama dos lançamentos mais aguardados do mês, entre continuações gigantes e produções nacionais.
-            </p>
-            <a href="#">Ler mais</a>
+            <small>Crítica</small>
+            <h3>Uma Segunda Chance</h3>
+            <p>Um romance sobre recomeços que funciona na estrutura, mas perde força na química e na escalação.</p>
+            <a href="uma-segunda-chance.html">Ler mais</a>
+          </article>
+
+          <article class="card">
+            <small>Crítica</small>
+            <h3>Enzo</h3>
+            <p>Uma proposta curiosa e diferente, mas que se enfraquece por escolhas pouco convincentes e falta de direção.</p>
+            <a href="enzo.html">Ler mais</a>
+          </article>
+
+          <article class="card">
+            <small>Crítica</small>
+            <h3>Devoradores de Estrelas</h3>
+            <p>Uma ficção científica grandiosa que encontra sua força maior na amizade e na delicadeza emocional.</p>
+            <a href="devoradores-de-estrelas.html">Ler mais</a>
+          </article>
+
+          <article class="card">
+            <small>Crítica</small>
+            <h3>Casamento Sangrento 2: A Viúva</h3>
+            <p>Mais brutal e mais intenso, ainda que enfraquecido por conflitos repetitivos e algumas incoerências.</p>
+            <a href="casamento-sangrento-2.html">Ler mais</a>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="destaques">
+    <section id="arquivo">
       <div class="container">
         <div class="section-title">
-          <h2>Destaques</h2>
-          <p>Espaço para matérias, listas e conteúdos especiais.</p>
+          <h2>Arquivo de críticas</h2>
+          <p>Os títulos anteriores continuam organizados por ordem de lançamento.</p>
         </div>
 
-        <div class="highlight">
-          <div class="highlight-box">
-            <span class="tag">Especial</span>
-            <h3>Os filmes mais aguardados do ano</h3>
-            <p>
-              Uma seleção com os títulos que mais prometem movimentar os cinemas, do blockbuster ao drama prestigiado.
-            </p>
-            <a href="#" class="button">Abrir matéria</a>
-          </div>
+        <div class="reviews-grid">
+          <article class="card">
+            <small>Crítica</small>
+            <h3>Depois do Fogo</h3>
+            <p>Um drama sensível e visualmente bonito, com ótimas atuações, mas limitado por um roteiro estagnado.</p>
+            <a href="depois-do-fogo.html">Ler mais</a>
+          </article>
 
-          <div class="highlight-box">
-            <span class="tag">Lista</span>
-            <h3>5 continuações que prometem dominar as conversas</h3>
-            <p>
-              Sequências, retornos e franquias que chegam cercadas de expectativa e podem definir o ano no cinema.
-            </p>
-            <a href="#" class="button">Ver lista</a>
-          </div>
+          <article class="card">
+            <small>Crítica</small>
+            <h3>Cara de Um, Focinnho de Outro</h3>
+            <p>Uma animação charmosa, engraçada e emocional, que diverte enquanto reflete sobre escolhas e humanidade.</p>
+            <a href="cara-de-um-focinnho-de-outro.html">Ler mais</a>
+          </article>
+
+          <article class="card">
+            <small>Crítica</small>
+            <h3>Pânico 7</h3>
+            <p>Suspense, nostalgia e manipulação bem conduzidos, mesmo com uma revelação final mais fraca do que deveria.</p>
+            <a href="panico-7.html">Ler mais</a>
+          </article>
+
+          <article class="card">
+            <small>Crítica</small>
+            <h3>Morro dos Ventos Uivantes</h3>
+            <p>Uma adaptação visualmente arrebatadora e emocionalmente intensa, embora por vezes excessiva em seu drama.</p>
+            <a href="morro-dos-ventos-uivantes.html">Ler mais</a>
+          </article>
+
+          <article class="card">
+            <small>Crítica</small>
+            <h3>Destruição Final 2</h3>
+            <p>Uma continuação válida e reflexiva, mas sem a mesma força dramática, ação e impacto do primeiro filme.</p>
+            <a href="destruicao-final-2.html">Ler mais</a>
+          </article>
+
+          <article class="card">
+            <small>Crítica</small>
+            <h3>Song Song Blues</h3>
+            <p>Um romance tocante sobre música, superação e apoio mútuo, conduzido por atuações sensíveis e envolventes.</p>
+            <a href="song-song-blues.html">Ler mais</a>
+          </article>
+
+          <article class="card">
+            <small>Crítica</small>
+            <h3>Marty Supreme</h3>
+            <p>Um retrato intenso sobre ambição, obsessão e limites pessoais, sustentado por ritmo firme e atuações fortes.</p>
+            <a href="marty-supreme.html">Ler mais</a>
+          </article>
         </div>
       </div>
     </section>
@@ -415,8 +439,9 @@
         <div class="about">
           <h2>Sobre o THUCCINE</h2>
           <p>
-            O THUCCINE nasceu para ser mais do que um perfil sobre filmes: a ideia é construir um portal com identidade própria,
-            misturando crítica, estética e paixão pelo cinema. Aqui, cada texto busca transmitir opinião, atmosfera e personalidade.
+            O THUCCINE nasceu para ser mais do que um perfil sobre filmes. A ideia é construir
+            um portal com identidade própria, acompanhando estreias e reunindo críticas em ordem
+            de lançamento, como um arquivo vivo de tudo o que vai chegando aos cinemas.
           </p>
         </div>
       </div>
