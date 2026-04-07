@@ -1,89 +1,37 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Destruição Final 2 | THUCCINE</title>
-
-  <style>
-    body {
-      margin: 0;
-      background: #050505;
-      color: #f5f5f5;
-      font-family: Georgia, "Times New Roman", serif;
-      line-height: 1.8;
-    }
-
-    .container {
-      width: min(900px, 90%);
-      margin: 0 auto;
-      padding: 60px 0;
-    }
-
-    a {
-      color: #f5f5f5;
-      text-decoration: none;
-    }
-
-    .voltar {
-      display: inline-block;
-      margin-bottom: 30px;
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 10px 14px;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    h1 {
-      font-size: clamp(2rem, 5vw, 4rem);
-      margin-bottom: 14px;
-      line-height: 1.1;
-    }
-
-    .meta {
-      color: #bdbdbd;
-      font-size: 0.95rem;
-      margin-bottom: 32px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      padding-bottom: 18px;
-    }
-
-    .texto {
-      font-size: 1.08rem;
-      color: #e5e5e5;
-    }
-
-    .texto p {
-      margin-bottom: 22px;
-    }
-  </style>
-
-</head>
-<body>
-  <div class="container">
-    <a class="voltar" href="index.html">← Voltar para a página inicial</a>
-
-    <h1>Destruição Final 2</h1>
-    <div class="meta">Crítica • THUCCINE</div>
-
-    <div class="texto">
-      <p>
-        Destruição Final 2 retoma a premissa do primeiro filme ao acompanhar personagens em busca de um refúgio diante do colapso do planeta. A ideia continua sendo interessante e carrega um forte potencial dramático, principalmente pelo cenário extremo do fim do mundo, que naturalmente provoca tensão e curiosidade.
-      </p>
-      <p>
-        O filme até constrói sequências capazes de gerar ansiedade, especialmente nos momentos de maior caos. No entanto, muitas dessas cenas se resolvem rápido demais, impedindo que o espectador mergulhe completamente na tensão proposta. Esse ritmo apressado faz com que os conflitos percam parte do impacto e avancem antes de atingirem todo o seu peso emocional.
-      </p>
-      <p>
-        Outro ponto que enfraquece a narrativa é a introdução de personagens e situações que pouco acrescentam à trama. Essa escolha acaba diluindo a história e contribui para que o filme não mantenha o padrão estabelecido pelo antecessor, principalmente nas cenas de ação, que deixam a desejar. As atuações também não ajudam nesse sentido, já que muitas parecem superficiais e não transmitem o sentimento esperado para um contexto tão extremo.
-      </p>
-      <p>
-        Ainda assim, o filme acerta ao trazer reflexões interessantes. A narrativa evidencia o egoísmo humano ao mostrar que, mesmo diante de uma ameaça comum, muitas pessoas escolhem lutar apenas pela própria sobrevivência em vez de se unir. Ao mesmo tempo, reforça a fragilidade dos bens materiais, que se tornam insignificantes quando tudo ao redor está sendo destruído.
-      </p>
-      <p>
-        No geral, Destruição Final 2 pode não alcançar a força do primeiro, mas entrega uma experiência válida, especialmente para quem já está envolvido com a história. Entre falhas e acertos, é um filme que levanta questionamentos e vale ser assistido para que cada espectador tire suas próprias conclusões.
-      </p>
-    </div>
-  </div>
-</body>
-</html>
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Destruição Final 2 | THUCCINE</title><style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: #050505; color: #f5f5f5; font-family: Georgia, "Times New Roman", serif; line-height: 1.75; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1180px, 92%); margin: 0 auto; }
+    header { position: sticky; top: 0; z-index: 30; background: rgba(5, 5, 5, 0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .topbar { min-height: 108px; display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 16px 0; }
+    .brand { display: inline-flex; align-items: center; min-height: 52px; }
+    .brand-logo { height: 92px; width: auto; object-fit: contain; filter: drop-shadow(0 0 8px rgba(255,255,255,0.10)); }
+    .brand-text { display: none; font-size: 2rem; font-weight: 700; letter-spacing: 0.22em; white-space: nowrap; }
+    nav { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
+    nav a { font-size: 0.92rem; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.82; transition: 0.2s ease; position: relative; }
+    nav a::after { content: ""; position: absolute; left: 0; bottom: -6px; width: 100%; height: 1px; background: rgba(255,255,255,0.7); transform: scaleX(0); transform-origin: left; transition: transform 0.2s ease; }
+    nav a:hover { opacity: 1; } nav a:hover::after { transform: scaleX(1); }
+    main { padding: 50px 0 80px; }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 28px; padding: 10px 14px; border: 1px solid rgba(255,255,255,0.16); text-transform: uppercase; letter-spacing: 0.10em; font-size: 0.78rem; color: #dddddd; transition: 0.2s ease; }
+    .back-link:hover { background: #f5f5f5; color: #050505; }
+    .article-shell { border: 1px solid rgba(255,255,255,0.10); background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); padding: 34px; position: relative; overflow: hidden; }
+    .article-shell::before { content: ""; position: absolute; inset: 0 auto auto 0; width: 100%; height: 1px; background: linear-gradient(90deg, rgba(255,255,255,0.30), transparent 45%); pointer-events: none; }
+    .article-top { display: grid; grid-template-columns: 300px 1fr; gap: 34px; align-items: start; }
+    .poster-box { position: sticky; top: 138px; }
+    .poster-box img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; border: 1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.03); }
+    .article-meta .tag { display: inline-block; margin-bottom: 16px; padding: 7px 12px; border: 1px solid rgba(255,255,255,0.16); font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; color: #d8d8d8; }
+    h1 { font-size: clamp(2.4rem, 4vw, 4.6rem); line-height: 1.02; margin-bottom: 14px; max-width: 12ch; }
+    .subtitle { color: #cecece; font-size: 1.04rem; margin-bottom: 24px; max-width: 800px; }
+    .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 28px; padding: 20px 0 26px; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 26px; }
+    .fact-item span { display: block; color: #9c9c9c; font-size: 0.80rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 5px; }
+    .fact-item strong { font-size: 1rem; color: #f2f2f2; font-weight: 600; }
+    .review-body p { margin-bottom: 22px; font-size: 1.08rem; color: #ededed; }
+    .review-body p.lead { font-size: 1.15rem; color: #ffffff; }
+    .note { margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.08); color: #a8a8a8; font-size: 0.95rem; }
+    footer { padding: 28px 0 54px; color: #9f9f9f; border-top: 1px solid rgba(255,255,255,0.08); text-align: center; font-size: 0.95rem; margin-top: 70px; }
+    @media (max-width: 980px) { .topbar { flex-direction: column; align-items: flex-start; } nav { gap: 14px; } .article-top { grid-template-columns: 1fr; } .poster-box { position: static; max-width: 340px; } }
+    @media (max-width: 560px) { .brand-logo { height: 64px; } .brand-text { font-size: 1.5rem; } .article-shell { padding: 22px; } .facts { grid-template-columns: 1fr; } .review-body p { font-size: 1rem; } }
+</style></head><body><header><div class="container topbar"><a href="index.html" class="brand" aria-label="THUCCINE"><img src="logo-thuccine.png" alt="THUCCINE" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';" /><span class="brand-text">THUCCINE</span></a><nav><a href="index.html">Início</a><a href="index.html#recentes">Recentes</a><a href="index.html#arquivo">Arquivo</a><a href="index.html#sobre">Sobre</a></nav></div></header><main><div class="container"><a href="index.html" class="back-link">← Voltar para a página inicial</a><article class="article-shell"><div class="article-top"><aside class="poster-box"><img src="poster-destruicao-final-2.jpg" alt="Pôster de Destruição Final 2" /></aside><section class="article-meta"><span class="tag">Crítica</span><h1>Destruição Final 2</h1><p class="subtitle">Depois da catástrofe do primeiro filme, a família Garrity deixa o bunker e enfrenta um mundo devastado, onde a sobrevivência depende de suportar tanto o frio quanto o pior da humanidade.</p><div class="facts"><div class="fact-item"><span>Estreia no Brasil</span><strong>5 de fevereiro de 2026</strong></div><div class="fact-item"><span>Título original</span><strong>Greenland 2: Migration</strong></div><div class="fact-item"><span>Ano</span><strong>2026</strong></div><div class="fact-item"><span>Duração</span><strong>1h 39min</strong></div><div class="fact-item"><span>País</span><strong>Estados Unidos</strong></div><div class="fact-item"><span>Direção</span><strong>Ric Roman Waugh</strong></div><div class="fact-item"><span>Roteiro</span><strong>Chris Sparling, Mitchell LaFortune</strong></div><div class="fact-item"><span>Elenco</span><strong>Gerard Butler, Morena Baccarin, Roman Griffin Davis</strong></div><div class="fact-item"><span>Onde assistir</span><strong>Claro tv+ ou Apple TV Store para alugar</strong></div></div><div class="review-body"><p class="lead">Destruição Final 2 retoma a premissa do primeiro filme ao acompanhar personagens em busca de um refúgio diante do colapso do planeta. A ideia continua sendo interessante e carrega um forte potencial dramático, principalmente pelo cenário extremo do fim do mundo, que naturalmente provoca tensão e curiosidade.</p><p>O filme até constrói sequências capazes de gerar ansiedade, especialmente nos momentos de maior caos. No entanto, muitas dessas cenas se resolvem rápido demais, impedindo que o espectador mergulhe completamente na tensão proposta. Esse ritmo apressado faz com que os conflitos percam parte do impacto e avancem antes de atingirem todo o seu peso emocional.</p><p>Outro ponto que enfraquece a narrativa é a introdução de personagens e situações que pouco acrescentam à trama. Essa escolha acaba diluindo a história e contribui para que o filme não mantenha o padrão estabelecido pelo antecessor, principalmente nas cenas de ação, que deixam a desejar. As atuações também não ajudam nesse sentido, já que muitas parecem superficiais e não transmitem o sentimento esperado para um contexto tão extremo.</p><p>Ainda assim, o filme acerta ao trazer reflexões interessantes. A narrativa evidencia o egoísmo humano ao mostrar que, mesmo diante de uma ameaça comum, muitas pessoas escolhem lutar apenas pela própria sobrevivência em vez de se unir. Ao mesmo tempo, reforça a fragilidade dos bens materiais, que se tornam insignificantes quando tudo ao redor está sendo destruído.</p><p>No geral, Destruição Final 2 pode não alcançar a força do primeiro, mas entrega uma experiência válida, especialmente para quem já está envolvido com a história. Entre falhas e acertos, é um filme que levanta questionamentos e vale ser assistido para que cada espectador tire suas próprias conclusões.</p></div><p class="note">Ficha técnica montada com base em fontes públicas consultadas em abril de 2026. Disponibilidade de streaming pode mudar com o tempo.</p></section></div></article></div></main><footer><div class="container">© 2026 THUCCINE — Portal de críticas de cinema.</div></footer></body></html>
