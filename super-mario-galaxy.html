@@ -5,107 +5,426 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Super Mario Galaxy: O Filme | THUCCINE</title>
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
       background: #050505;
       color: #f5f5f5;
       font-family: Georgia, "Times New Roman", serif;
-      line-height: 1.8;
-    }
-
-    .container {
-      width: min(900px, 90%);
-      margin: 0 auto;
-      padding: 60px 0;
+      line-height: 1.75;
     }
 
     a {
-      color: #f5f5f5;
+      color: inherit;
       text-decoration: none;
     }
 
-    .voltar {
-      display: inline-block;
-      margin-bottom: 30px;
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 10px 14px;
-      font-size: 0.85rem;
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(5, 5, 5, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .topbar {
+      min-height: 108px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      min-height: 52px;
+    }
+
+    .brand-logo {
+      height: 92px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(255,255,255,0.10));
+    }
+
+    .brand-text {
+      display: none;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      white-space: nowrap;
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    nav a {
+      font-size: 0.92rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.12em;
+      opacity: 0.82;
+      transition: 0.2s ease;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.7);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease;
+    }
+
+    nav a:hover {
+      opacity: 1;
+    }
+
+    nav a:hover::after {
+      transform: scaleX(1);
+    }
+
+    main {
+      padding: 50px 0 80px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 28px;
+      padding: 10px 14px;
+      border: 1px solid rgba(255,255,255,0.16);
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      font-size: 0.78rem;
+      color: #dddddd;
+      transition: 0.2s ease;
+    }
+
+    .back-link:hover {
+      background: #f5f5f5;
+      color: #050505;
+    }
+
+    .article-shell {
+      border: 1px solid rgba(255,255,255,0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.30), transparent 45%);
+      pointer-events: none;
+    }
+
+    .article-top {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .poster-box {
+      position: sticky;
+      top: 138px;
+    }
+
+    .poster-box img {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .article-meta .tag {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 7px 12px;
+      border: 1px solid rgba(255,255,255,0.16);
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #d8d8d8;
     }
 
     h1 {
-      font-size: clamp(2rem, 5vw, 4rem);
+      font-size: clamp(2.4rem, 4vw, 4.6rem);
+      line-height: 1.02;
       margin-bottom: 14px;
-      line-height: 1.1;
+      max-width: 12ch;
     }
 
-    .meta {
-      color: #bdbdbd;
-      font-size: 0.95rem;
-      margin-bottom: 32px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      padding-bottom: 18px;
+    .subtitle {
+      color: #cecece;
+      font-size: 1.04rem;
+      margin-bottom: 24px;
+      max-width: 800px;
     }
 
-    .texto {
-      font-size: 1.08rem;
-      color: #e5e5e5;
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 28px;
+      padding: 20px 0 26px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 26px;
     }
 
-    .texto p {
+    .fact-item span {
+      display: block;
+      color: #9c9c9c;
+      font-size: 0.80rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .fact-item strong {
+      font-size: 1rem;
+      color: #f2f2f2;
+      font-weight: 600;
+    }
+
+    .review-body p {
       margin-bottom: 22px;
+      font-size: 1.08rem;
+      color: #ededed;
+    }
+
+    .review-body p.lead {
+      font-size: 1.15rem;
+      color: #ffffff;
+    }
+
+    .note {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #a8a8a8;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      padding: 28px 0 54px;
+      color: #9f9f9f;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+      font-size: 0.95rem;
+      margin-top: 70px;
+    }
+
+    @media (max-width: 980px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        gap: 14px;
+      }
+
+      .article-top {
+        grid-template-columns: 1fr;
+      }
+
+      .poster-box {
+        position: static;
+        max-width: 340px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .brand-logo {
+        height: 64px;
+      }
+
+      .brand-text {
+        font-size: 1.5rem;
+      }
+
+      .article-shell {
+        padding: 22px;
+      }
+
+      .facts {
+        grid-template-columns: 1fr;
+      }
+
+      .review-body p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <a class="voltar" href="index.html">← Voltar para a página inicial</a>
+  <header>
+    <div class="container topbar">
+      <a href="index.html" class="brand" aria-label="THUCCINE">
+        <img
+          src="logo-thuccine.png"
+          alt="THUCCINE"
+          class="brand-logo"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';"
+        />
+        <span class="brand-text">THUCCINE</span>
+      </a>
 
-    <h1>Super Mario Galaxy: O Filme</h1>
-    <div class="meta">Crítica • THUCCINE</div>
-
-    <div class="texto">
-      <p>
-        Super Mario Galaxy: O Filme consegue ser uma ótima sequência, se sobressaindo ao primeiro em diversos aspectos e também se consolidando como uma adaptação muito eficiente dos games para o cinema.
-      </p>
-
-      <p>
-        O roteiro constrói uma aventura que consegue encantar tanto as crianças quanto os adultos, principalmente por meio da nostalgia. Esse sentimento é construído em grande parte pelos efeitos sonoros, pelos cenários e pelas inúmeras referências espalhadas ao longo da narrativa.
-      </p>
-
-      <p>
-        Inclusive, esse é o grande ponto forte do filme: sua nostalgia, que está presente do começo ao fim. Há diversas referências aos jogos do Mario, o que aumenta ainda mais o sentimento de identificação para quem já conhece esse universo e torna a experiência muito mais envolvente.
-      </p>
-
-      <p>
-        O longa entende bem a força da franquia e sabe transformar elementos clássicos dos games em linguagem cinematográfica. Em vários momentos, as cenas de ação parecem verdadeiras fases de jogo adaptadas para o cinema, o que ajuda a dar ritmo, criatividade e personalidade à aventura.
-      </p>
-
-      <p>
-        Além disso, o filme também consegue construir uma história que funciona para além das referências. Há desenvolvimento, há motivação e há um senso de progressão que impede a trama de parecer vazia ou simplesmente jogada na tela sem propósito.
-      </p>
-
-      <p>
-        Por ser um filme mais infantil, é claro que alguns clichês aparecem. Em certos momentos, o roteiro facilita situações para o vilão no começo, quase como um empurrão para que a história aconteça, e depois também beneficia os heróis no final para garantir um desfecho mais típico desse tipo de produção.
-      </p>
-
-      <p>
-        Ainda assim, esses clichês não chegam a comprometer a experiência. O filme tem carisma de sobra, sabe equilibrar humor, ação e emoção, e mantém uma energia constante que torna tudo muito agradável de acompanhar.
-      </p>
-
-      <p>
-        Visualmente, a produção também acerta bastante ao ampliar a escala da aventura. O aspecto galáctico traz mais grandiosidade para a franquia e faz com que essa sequência pareça maior, mais ambiciosa e mais espetacular do que o primeiro longa.
-      </p>
-
-      <p>
-        No fim, Super Mario Galaxy: O Filme é uma sequência que entende o que tornou seu antecessor tão querido, mas também encontra maneiras de crescer, expandir seu universo e entregar algo ainda mais divertido. É um filme que acerta principalmente por respeitar a essência dos jogos e transformá-la em entretenimento de verdade.
-      </p>
-
-      <p>
-        Entre referências, cenas de ação criativas e uma forte carga nostálgica, o longa se firma não apenas como uma boa continuação, mas também como uma adaptação que realmente abraça o espírito do universo Mario.
-      </p>
+      <nav>
+        <a href="index.html">Início</a>
+        <a href="index.html#recentes">Recentes</a>
+        <a href="index.html#arquivo">Arquivo</a>
+        <a href="index.html#sobre">Sobre</a>
+      </nav>
     </div>
-  </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <a href="index.html" class="back-link">← Voltar para a página inicial</a>
+
+      <article class="article-shell">
+        <div class="article-top">
+          <aside class="poster-box">
+            <img src="poster-super-mario-galaxy.jpg" alt="Pôster de Super Mario Galaxy: O Filme" />
+          </aside>
+
+          <section class="article-meta">
+            <span class="tag">Crítica</span>
+            <h1>Super Mario Galaxy: O Filme</h1>
+            <p class="subtitle">
+              Uma sequência que expande a aventura, reforça a nostalgia e transforma o universo dos games
+              em espetáculo cinematográfico com mais escala, energia e encanto.
+            </p>
+
+            <div class="facts">
+              <div class="fact-item">
+                <span>Ano</span>
+                <strong>2026</strong>
+              </div>
+              <div class="fact-item">
+                <span>Duração</span>
+                <strong>98 min</strong>
+              </div>
+              <div class="fact-item">
+                <span>País</span>
+                <strong>Japão, Estados Unidos</strong>
+              </div>
+              <div class="fact-item">
+                <span>Classificação</span>
+                <strong>Livre</strong>
+              </div>
+              <div class="fact-item">
+                <span>Direção</span>
+                <strong>Aaron Horvath, Michael Jelenic</strong>
+              </div>
+              <div class="fact-item">
+                <span>Roteiro</span>
+                <strong>Matthew Fogel</strong>
+              </div>
+              <div class="fact-item">
+                <span>Elenco</span>
+                <strong>Chris Pratt, Charlie Day, Anya Taylor-Joy, Jack Black, Keegan-Michael Key, Brie Larson, Donald Glover, Benny Safdie, Glen Powell</strong>
+              </div>
+              <div class="fact-item">
+                <span>Onde assistir</span>
+                <strong>Em cartaz nos cinemas do Brasil; sem streaming no momento</strong>
+              </div>
+            </div>
+
+            <div class="review-body">
+              <p class="lead">
+                Super Mario Galaxy: O Filme consegue ser uma ótima sequência, se sobressaindo ao primeiro em diversos aspectos e também se consolidando como uma adaptação muito eficiente dos games para o cinema.
+              </p>
+
+              <p>
+                O roteiro constrói uma aventura que consegue encantar tanto as crianças quanto os adultos, principalmente por meio da nostalgia. Esse sentimento é construído em grande parte pelos efeitos sonoros, pelos cenários e pelas inúmeras referências espalhadas ao longo da narrativa.
+              </p>
+
+              <p>
+                Inclusive, esse é o grande ponto forte do filme: sua nostalgia, que está presente do começo ao fim. Há diversas referências aos jogos do Mario, o que aumenta ainda mais o sentimento de identificação para quem já conhece esse universo e torna a experiência muito mais envolvente.
+              </p>
+
+              <p>
+                O longa entende bem a força da franquia e sabe transformar elementos clássicos dos games em linguagem cinematográfica. Em vários momentos, as cenas de ação parecem verdadeiras fases de jogo adaptadas para o cinema, o que ajuda a dar ritmo, criatividade e personalidade à aventura.
+              </p>
+
+              <p>
+                Além disso, o filme também consegue construir uma história que funciona para além das referências. Há desenvolvimento, há motivação e há um senso de progressão que impede a trama de parecer vazia ou simplesmente jogada na tela sem propósito.
+              </p>
+
+              <p>
+                Por ser um filme mais infantil, é claro que alguns clichês aparecem. Em certos momentos, o roteiro facilita situações para o vilão no começo, quase como um empurrão para que a história aconteça, e depois também beneficia os heróis no final para garantir um desfecho mais típico desse tipo de produção.
+              </p>
+
+              <p>
+                Ainda assim, esses clichês não chegam a comprometer a experiência. O filme tem carisma de sobra, sabe equilibrar humor, ação e emoção, e mantém uma energia constante que torna tudo muito agradável de acompanhar.
+              </p>
+
+              <p>
+                Visualmente, a produção também acerta bastante ao ampliar a escala da aventura. O aspecto galáctico traz mais grandiosidade para a franquia e faz com que essa sequência pareça maior, mais ambiciosa e mais espetacular do que o primeiro longa.
+              </p>
+
+              <p>
+                No fim, Super Mario Galaxy: O Filme é uma sequência que entende o que tornou seu antecessor tão querido, mas também encontra maneiras de crescer, expandir seu universo e entregar algo ainda mais divertido. É um filme que acerta principalmente por respeitar a essência dos jogos e transformá-la em entretenimento de verdade.
+              </p>
+
+              <p>
+                Entre referências, cenas de ação criativas e uma forte carga nostálgica, o longa se firma não apenas como uma boa continuação, mas também como uma adaptação que realmente abraça o espírito do universo Mario.
+              </p>
+            </div>
+
+            <p class="note">
+              Alguns catálogos podem mostrar variações pequenas de duração. Onde assistir pode mudar com o tempo.
+            </p>
+          </section>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 THUCCINE — Portal de críticas de cinema.
+    </div>
+  </footer>
 </body>
 </html>
