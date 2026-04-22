@@ -123,7 +123,7 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.22fr 0.78fr;
+      grid-template-columns: 1.18fr 0.82fr;
       gap: 28px;
       align-items: stretch;
     }
@@ -141,7 +141,8 @@
     .hero-main::before,
     .hero-side::before,
     .card::before,
-    .about::before {
+    .about::before,
+    .social-box::before {
       content: "";
       position: absolute;
       inset: 0 auto auto 0;
@@ -194,20 +195,43 @@
     }
 
     .hero-side {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .hero-side-poster {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .hero-side-poster img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-side-content {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      min-height: 100%;
     }
 
     .hero-side h2 {
-      font-size: 1.55rem;
+      font-size: 1.9rem;
       margin-bottom: 12px;
-      line-height: 1.18;
+      line-height: 1.08;
     }
 
     .hero-side p {
       color: #d0d0d0;
       margin-bottom: 18px;
+      font-size: 1rem;
     }
 
     section {
@@ -311,21 +335,36 @@
       padding-bottom: 2px;
     }
 
-    .about {
+    .about,
+    .social-box {
       position: relative;
       border: 1px solid rgba(255,255,255,0.08);
       padding: 34px;
       background: rgba(255,255,255,0.02);
     }
 
-    .about h2 {
+    .about h2,
+    .social-box h2 {
       font-size: 2rem;
       margin-bottom: 14px;
     }
 
-    .about p {
+    .about p,
+    .social-box p {
       color: #d0d0d0;
       max-width: 850px;
+    }
+
+    .social-box {
+      margin-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .social-box .button {
+      flex-shrink: 0;
     }
 
     footer {
@@ -350,6 +389,19 @@
       nav {
         gap: 14px;
       }
+
+      .hero-side {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-side-poster {
+        max-width: 240px;
+      }
+
+      .social-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
 
     @media (max-width: 560px) {
@@ -359,7 +411,8 @@
 
       .hero-main,
       .hero-side,
-      .about {
+      .about,
+      .social-box {
         padding: 22px;
       }
 
@@ -372,7 +425,8 @@
       }
 
       .section-title h2,
-      .about h2 {
+      .about h2,
+      .social-box h2 {
         font-size: 1.6rem;
       }
 
@@ -382,6 +436,10 @@
 
       .card-content {
         padding: 18px;
+      }
+
+      .hero-side h2 {
+        font-size: 1.55rem;
       }
     }
   </style>
@@ -423,12 +481,18 @@
         </div>
 
         <div class="hero-side">
-          <span class="tag">Lançamento mais recente</span>
-          <h2>O Drama</h2>
-          <p>
-            Um romance fragmentado, sensorial e instável, em que amor, suspeita e desgaste se confundem até o limite.
-          </p>
-          <a href="o-drama.html" class="button">Ler crítica</a>
+          <a href="o-drama.html" class="hero-side-poster">
+            <img src="poster-o-drama.jpg" alt="Pôster de O Drama" />
+          </a>
+
+          <div class="hero-side-content">
+            <span class="tag">Lançamento mais recente</span>
+            <h2>O Drama</h2>
+            <p>
+              Um romance fragmentado, sensorial e instável, em que amor, suspeita e desgaste se confundem até o limite.
+            </p>
+            <a href="o-drama.html" class="button">Ler crítica</a>
+          </div>
         </div>
       </div>
     </section>
@@ -475,54 +539,6 @@
               <a href="nuremberg.html">Ler crítica</a>
             </div>
           </article>
-
-          <article class="card">
-            <a href="uma-segunda-chance.html" class="card-poster">
-              <img src="poster-uma-segunda-chance.jpg" alt="Pôster de Uma Segunda Chance" />
-            </a>
-            <div class="card-content">
-              <small>Crítica</small>
-              <h3>Uma Segunda Chance</h3>
-              <p>Um romance sobre recomeços que funciona na estrutura, mas perde força na química e na escalação.</p>
-              <a href="uma-segunda-chance.html">Ler crítica</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <a href="enzo.html" class="card-poster">
-              <img src="poster-enzo.jpg" alt="Pôster de Enzo" />
-            </a>
-            <div class="card-content">
-              <small>Crítica</small>
-              <h3>Enzo</h3>
-              <p>Uma proposta curiosa e diferente, mas que se enfraquece por escolhas pouco convincentes e falta de direção.</p>
-              <a href="enzo.html">Ler crítica</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <a href="devoradores-de-estrelas.html" class="card-poster">
-              <img src="poster-devoradores-de-estrelas.jpg" alt="Pôster de Devoradores de Estrelas" />
-            </a>
-            <div class="card-content">
-              <small>Crítica</small>
-              <h3>Devoradores de Estrelas</h3>
-              <p>Uma ficção científica grandiosa que encontra sua força maior na amizade e na delicadeza emocional.</p>
-              <a href="devoradores-de-estrelas.html">Ler crítica</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <a href="casamento-sangrento-2.html" class="card-poster">
-              <img src="poster-casamento-sangrento-2.jpg" alt="Pôster de Casamento Sangrento 2: A Viúva" />
-            </a>
-            <div class="card-content">
-              <small>Crítica</small>
-              <h3>Casamento Sangrento 2: A Viúva</h3>
-              <p>Mais brutal e mais intenso, ainda que enfraquecido por conflitos repetitivos e algumas incoerências.</p>
-              <a href="casamento-sangrento-2.html">Ler crítica</a>
-            </div>
-          </article>
         </div>
       </div>
     </section>
@@ -534,89 +550,20 @@
         </div>
 
         <div class="reviews-grid">
-          <article class="card">
-            <a href="depois-do-fogo.html" class="card-poster">
-              <img src="poster-depois-do-fogo.jpg" alt="Pôster de Depois do Fogo" />
-            </a>
-            <div class="card-content">
-              <small>Crítica</small>
-              <h3>Depois do Fogo</h3>
-              <p>Um drama sensível e visualmente bonito, com ótimas atuações, mas limitado por um roteiro estagnado.</p>
-              <a href="depois-do-fogo.html">Ler crítica</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <a href="cara-de-um-focinnho-de-outro.html" class="card-poster">
-              <img src="poster-cara-de-um-focinnho-de-outro.jpg" alt="Pôster de Cara de Um, Focinnho de Outro" />
-            </a>
-            <div class="card-content">
-              <small>Crítica</small>
-              <h3>Cara de Um, Focinnho de Outro</h3>
-              <p>Uma animação charmosa, engraçada e emocional, que diverte enquanto reflete sobre escolhas e humanidade.</p>
-              <a href="cara-de-um-focinnho-de-outro.html">Ler crítica</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <a href="panico-7.html" class="card-poster">
-              <img src="poster-panico-7.jpg" alt="Pôster de Pânico 7" />
-            </a>
-            <div class="card-content">
-              <small>Crítica</small>
-              <h3>Pânico 7</h3>
-              <p>Suspense, nostalgia e manipulação bem conduzidos, mesmo com uma revelação final mais fraca do que deveria.</p>
-              <a href="panico-7.html">Ler crítica</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <a href="morro-dos-ventos-uivantes.html" class="card-poster">
-              <img src="poster-morro-dos-ventos-uivantes.jpg" alt="Pôster de Morro dos Ventos Uivantes" />
-            </a>
-            <div class="card-content">
-              <small>Crítica</small>
-              <h3>Morro dos Ventos Uivantes</h3>
-              <p>Uma adaptação visualmente arrebatadora e emocionalmente intensa, embora por vezes excessiva em seu drama.</p>
-              <a href="morro-dos-ventos-uivantes.html">Ler crítica</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <a href="destruicao-final-2.html" class="card-poster">
-              <img src="poster-destruicao-final-2.jpg" alt="Pôster de Destruição Final 2" />
-            </a>
-            <div class="card-content">
-              <small>Crítica</small>
-              <h3>Destruição Final 2</h3>
-              <p>Uma continuação válida e reflexiva, mas sem a mesma força dramática, ação e impacto do primeiro filme.</p>
-              <a href="destruicao-final-2.html">Ler crítica</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <a href="song-song-blues.html" class="card-poster">
-              <img src="poster-song-song-blues.jpg" alt="Pôster de Song Song Blues" />
-            </a>
-            <div class="card-content">
-              <small>Crítica</small>
-              <h3>Song Song Blues</h3>
-              <p>Um romance tocante sobre música, superação e apoio mútuo, conduzido por atuações sensíveis e envolventes.</p>
-              <a href="song-song-blues.html">Ler crítica</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <a href="marty-supreme.html" class="card-poster">
-              <img src="poster-marty-supreme.jpg" alt="Pôster de Marty Supreme" />
-            </a>
-            <div class="card-content">
-              <small>Crítica</small>
-              <h3>Marty Supreme</h3>
-              <p>Um retrato intenso sobre ambição, obsessão e limites pessoais, sustentado por ritmo firme e atuações fortes.</p>
-              <a href="marty-supreme.html">Ler crítica</a>
-            </div>
-          </article>
+          <article class="card"><a href="o-drama.html" class="card-poster"><img src="poster-o-drama.jpg" alt="Pôster de O Drama" /></a><div class="card-content"><small>Crítica</small><h3>O Drama</h3><p>Uma crise amorosa transformada em delírio emocional, sustentada por atuações intensas e atmosfera instável.</p><a href="o-drama.html">Ler crítica</a></div></article>
+          <article class="card"><a href="super-mario-galaxy.html" class="card-poster"><img src="poster-super-mario-galaxy.jpg" alt="Pôster de Super Mario Galaxy: O Filme" /></a><div class="card-content"><small>Crítica</small><h3>Super Mario Galaxy: O Filme</h3><p>Uma continuação que cresce em escala, nostalgia e energia, transformando a aventura em puro espetáculo.</p><a href="super-mario-galaxy.html">Ler crítica</a></div></article>
+          <article class="card"><a href="nuremberg.html" class="card-poster"><img src="poster-nuremberg.jpg" alt="Pôster de Nuremberg" /></a><div class="card-content"><small>Crítica</small><h3>Nuremberg</h3><p>Um tribunal transformado em campo de batalha moral, sustentado por tensão, palavras e responsabilidade histórica.</p><a href="nuremberg.html">Ler crítica</a></div></article>
+          <article class="card"><a href="uma-segunda-chance.html" class="card-poster"><img src="poster-uma-segunda-chance.jpg" alt="Pôster de Uma Segunda Chance" /></a><div class="card-content"><small>Crítica</small><h3>Uma Segunda Chance</h3><p>Um romance sobre recomeços que funciona na estrutura, mas perde força na química e na escalação.</p><a href="uma-segunda-chance.html">Ler crítica</a></div></article>
+          <article class="card"><a href="enzo.html" class="card-poster"><img src="poster-enzo.jpg" alt="Pôster de Enzo" /></a><div class="card-content"><small>Crítica</small><h3>Enzo</h3><p>Uma proposta curiosa e diferente, mas que se enfraquece por escolhas pouco convincentes e falta de direção.</p><a href="enzo.html">Ler crítica</a></div></article>
+          <article class="card"><a href="devoradores-de-estrelas.html" class="card-poster"><img src="poster-devoradores-de-estrelas.jpg" alt="Pôster de Devoradores de Estrelas" /></a><div class="card-content"><small>Crítica</small><h3>Devoradores de Estrelas</h3><p>Uma ficção científica grandiosa que encontra sua força maior na amizade e na delicadeza emocional.</p><a href="devoradores-de-estrelas.html">Ler crítica</a></div></article>
+          <article class="card"><a href="casamento-sangrento-2.html" class="card-poster"><img src="poster-casamento-sangrento-2.jpg" alt="Pôster de Casamento Sangrento 2: A Viúva" /></a><div class="card-content"><small>Crítica</small><h3>Casamento Sangrento 2: A Viúva</h3><p>Mais brutal e mais intenso, ainda que enfraquecido por conflitos repetitivos e algumas incoerências.</p><a href="casamento-sangrento-2.html">Ler crítica</a></div></article>
+          <article class="card"><a href="depois-do-fogo.html" class="card-poster"><img src="poster-depois-do-fogo.jpg" alt="Pôster de Depois do Fogo" /></a><div class="card-content"><small>Crítica</small><h3>Depois do Fogo</h3><p>Um drama sensível e visualmente bonito, com ótimas atuações, mas limitado por um roteiro estagnado.</p><a href="depois-do-fogo.html">Ler crítica</a></div></article>
+          <article class="card"><a href="cara-de-um-focinnho-de-outro.html" class="card-poster"><img src="poster-cara-de-um-focinnho-de-outro.jpg" alt="Pôster de Cara de Um, Focinnho de Outro" /></a><div class="card-content"><small>Crítica</small><h3>Cara de Um, Focinnho de Outro</h3><p>Uma animação charmosa, engraçada e emocional, que diverte enquanto reflete sobre escolhas e humanidade.</p><a href="cara-de-um-focinnho-de-outro.html">Ler crítica</a></div></article>
+          <article class="card"><a href="panico-7.html" class="card-poster"><img src="poster-panico-7.jpg" alt="Pôster de Pânico 7" /></a><div class="card-content"><small>Crítica</small><h3>Pânico 7</h3><p>Suspense, nostalgia e manipulação bem conduzidos, mesmo com uma revelação final mais fraca do que deveria.</p><a href="panico-7.html">Ler crítica</a></div></article>
+          <article class="card"><a href="morro-dos-ventos-uivantes.html" class="card-poster"><img src="poster-morro-dos-ventos-uivantes.jpg" alt="Pôster de Morro dos Ventos Uivantes" /></a><div class="card-content"><small>Crítica</small><h3>Morro dos Ventos Uivantes</h3><p>Uma adaptação visualmente arrebatadora e emocionalmente intensa, embora por vezes excessiva em seu drama.</p><a href="morro-dos-ventos-uivantes.html">Ler crítica</a></div></article>
+          <article class="card"><a href="destruicao-final-2.html" class="card-poster"><img src="poster-destruicao-final-2.jpg" alt="Pôster de Destruição Final 2" /></a><div class="card-content"><small>Crítica</small><h3>Destruição Final 2</h3><p>Uma continuação válida e reflexiva, mas sem a mesma força dramática, ação e impacto do primeiro filme.</p><a href="destruicao-final-2.html">Ler crítica</a></div></article>
+          <article class="card"><a href="song-song-blues.html" class="card-poster"><img src="poster-song-song-blues.jpg" alt="Pôster de Song Song Blues" /></a><div class="card-content"><small>Crítica</small><h3>Song Song Blues</h3><p>Um romance tocante sobre música, superação e apoio mútuo, conduzido por atuações sensíveis e envolventes.</p><a href="song-song-blues.html">Ler crítica</a></div></article>
+          <article class="card"><a href="marty-supreme.html" class="card-poster"><img src="poster-marty-supreme.jpg" alt="Pôster de Marty Supreme" /></a><div class="card-content"><small>Crítica</small><h3>Marty Supreme</h3><p>Um retrato intenso sobre ambição, obsessão e limites pessoais, sustentado por ritmo firme e atuações fortes.</p><a href="marty-supreme.html">Ler crítica</a></div></article>
         </div>
       </div>
     </section>
@@ -630,6 +577,16 @@
             um portal com identidade própria, acompanhando estreias e reunindo críticas em ordem
             de lançamento, como um arquivo vivo de tudo o que vai chegando aos cinemas.
           </p>
+        </div>
+
+        <div class="social-box">
+          <div>
+            <h2>Continue acompanhando</h2>
+            <p>
+              Quer ver novidades, estreias e novos posts do THUCCINE primeiro? Adicione aqui o link do seu Instagram e use esse espaço como chamada final do site.
+            </p>
+          </div>
+          <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="button">Ir para o Instagram</a>
         </div>
       </div>
     </section>
