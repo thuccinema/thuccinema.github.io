@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Michael | THUCCINE</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #050505;
+      color: #f5f5f5;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.75;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1180px, 92%); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(5, 5, 5, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .topbar {
+      min-height: 108px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      min-height: 52px;
+    }
+
+    .brand-logo {
+      height: 92px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(255,255,255,0.10));
+    }
+
+    .brand-text {
+      display: none;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      white-space: nowrap;
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    nav a {
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.82;
+      transition: 0.2s ease;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.7);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease;
+    }
+
+    nav a:hover { opacity: 1; }
+    nav a:hover::after { transform: scaleX(1); }
+
+    main { padding: 50px 0 80px; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 28px;
+      padding: 10px 14px;
+      border: 1px solid rgba(255,255,255,0.16);
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      font-size: 0.78rem;
+      color: #dddddd;
+      transition: 0.2s ease;
+    }
+
+    .back-link:hover {
+      background: #f5f5f5;
+      color: #050505;
+    }
+
+    .article-shell {
+      border: 1px solid rgba(255,255,255,0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.30), transparent 45%);
+      pointer-events: none;
+    }
+
+    .article-top {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .poster-box {
+      position: sticky;
+      top: 138px;
+    }
+
+    .poster-box img {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .article-meta .tag {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 7px 12px;
+      border: 1px solid rgba(255,255,255,0.16);
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #d8d8d8;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 4vw, 4.6rem);
+      line-height: 1.02;
+      margin-bottom: 14px;
+      max-width: 12ch;
+    }
+
+    .subtitle {
+      color: #cecece;
+      font-size: 1.04rem;
+      margin-bottom: 24px;
+      max-width: 800px;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 28px;
+      padding: 20px 0 26px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 26px;
+    }
+
+    .fact-item span {
+      display: block;
+      color: #9c9c9c;
+      font-size: 0.80rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .fact-item strong {
+      font-size: 1rem;
+      color: #f2f2f2;
+      font-weight: 600;
+    }
+
+    .review-body p {
+      margin-bottom: 22px;
+      font-size: 1.08rem;
+      color: #ededed;
+    }
+
+    .review-body p.lead {
+      font-size: 1.15rem;
+      color: #ffffff;
+    }
+
+    .note {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #a8a8a8;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      padding: 28px 0 54px;
+      color: #9f9f9f;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+      font-size: 0.95rem;
+      margin-top: 70px;
+    }
+
+    @media (max-width: 980px) {
+      .topbar { flex-direction: column; align-items: flex-start; }
+      nav { gap: 14px; }
+      .article-top { grid-template-columns: 1fr; }
+      .poster-box { position: static; max-width: 340px; }
+    }
+
+    @media (max-width: 560px) {
+      .brand-logo { height: 64px; }
+      .brand-text { font-size: 1.5rem; }
+      .article-shell { padding: 22px; }
+      .facts { grid-template-columns: 1fr; }
+      .review-body p { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container topbar">
+      <a href="index.html" class="brand" aria-label="THUCCINE">
+        <img
+          src="logo-thuccine.png"
+          alt="THUCCINE"
+          class="brand-logo"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';"
+        />
+        <span class="brand-text">THUCCINE</span>
+      </a>
+
+      <nav>
+        <a href="index.html">Início</a>
+        <a href="index.html#recentes">Recentes</a>
+        <a href="index.html#arquivo">Arquivo</a>
+        <a href="index.html#sobre">Sobre</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <a href="index.html" class="back-link">← Voltar para a página inicial</a>
+
+      <article class="article-shell">
+        <div class="article-top">
+          <aside class="poster-box">
+            <img src="poster-michael.jpg" alt="Pôster de Michael" />
+          </aside>
+
+          <section class="article-meta">
+            <span class="tag">Crítica</span>
+            <h1>Michael</h1>
+            <p class="subtitle">
+              A cinebiografia acompanha a ascensão de Michael Jackson desde os Jackson Five até a consolidação de seu legado, explorando não só o palco e os sucessos, mas também as pressões, as feridas e a obsessão criativa por trás do ícone.
+            </p>
+
+            <div class="facts">
+              <div class="fact-item"><span>Estreia no Brasil</span><strong>23 de abril de 2026</strong></div>
+              <div class="fact-item"><span>Título original</span><strong>Michael</strong></div>
+              <div class="fact-item"><span>Ano</span><strong>2026</strong></div>
+              <div class="fact-item"><span>Duração</span><strong>2h 08min</strong></div>
+              <div class="fact-item"><span>País</span><strong>Estados Unidos</strong></div>
+              <div class="fact-item"><span>Classificação</span><strong>Não recomendado para menores de 12 anos</strong></div>
+              <div class="fact-item"><span>Gênero</span><strong>Biopic, Drama, Musical</strong></div>
+              <div class="fact-item"><span>Direção</span><strong>Antoine Fuqua</strong></div>
+              <div class="fact-item"><span>Roteiro</span><strong>John Logan</strong></div>
+              <div class="fact-item"><span>Elenco</span><strong>Jaafar Jackson, Colman Domingo, Nia Long, Miles Teller, Juliano Valdi</strong></div>
+              <div class="fact-item"><span>Onde assistir</span><strong>Atualmente nos cinemas do Brasil; sem streaming no momento</strong></div>
+            </div>
+
+            <div class="review-body">
+              <p class="lead">
+                Em “Michael”, a cinebiografia não se contenta em apenas revisitar a trajetória de um ícone. O filme parte da figura pública de Michael Jackson, mas encontra sua força justamente quando decide olhar para o artista por trás do mito, revelando não só o brilho do palco, mas também as pressões, feridas e ambições que moldaram sua ascensão. Desde os primeiros minutos, a obra já estabelece esse impacto com segurança, conseguindo arrepiar antes mesmo de alcançar seus grandes momentos.
+              </p>
+
+              <p>
+                O elenco é, sem dúvida, um dos maiores trunfos do filme. Jaafar Jackson impressiona de forma quase inquietante ao incorporar Michael com tamanho rigor físico e emocional que, em muitos momentos, a sensação é de estar diante do próprio cantor. Não se trata apenas de imitação, mas de presença. Colman Domingo, por sua vez, constrói um pai duro, frio e profundamente opressor, daqueles que despertam repulsa imediata. Há algo em seu olhar que comunica violência mesmo no silêncio, o que torna sua presença uma das mais incômodas do longa. Já Juliano Valdi, como o jovem Michael, traz carisma e vitalidade, transmitindo com naturalidade a alegria e o encanto que ajudam a entender por que aquele menino já parecia destinado a algo maior.
+              </p>
+
+              <p>
+                A trilha sonora é o ponto mais alto do filme, e não apenas por reunir alguns dos maiores sucessos de Michael Jackson. O acerto está na forma como essas músicas são inseridas. Elas não surgem como fan service ou simples celebração nostálgica, mas como parte orgânica da narrativa. Cada canção aparece no momento certo, quase como extensão dramática do que está sendo vivido. O filme entende que, no caso de Michael, a música não era ornamento, era linguagem, memória e resposta ao mundo. Isso fica ainda mais interessante quando o roteiro mostra como acontecimentos reais, tensões pessoais e referências culturais se transformavam em criação artística, especialmente em momentos ligados a “Thriller”, um dos exemplos mais bem trabalhados dessa lógica.
+              </p>
+
+              <p>
+                Narrativamente, o longa acerta ao mostrar que o caminho até a consagração não foi construído apenas por talento, mas também por resistência. O filme retrata com clareza os conflitos que Michael precisou atravessar, inclusive dentro da própria família, e como mesmo cercado por cobrança, medo e dor, permaneceu firme em sua ambição. Há um esforço visível em apresentar o artista não só como astro, mas como alguém que precisou sobreviver aos próprios bastidores antes de dominar o palco. Nesse sentido, a referência a Peter Pan funciona bem como símbolo íntimo. A associação entre Michael e o menino que se recusa a crescer, em contraste com a imagem do pai como Capitão Gancho, ajuda a traduzir sua necessidade de preservar fantasia, sensibilidade e liberdade mesmo em meio a uma vida marcada pelo controle.
+              </p>
+
+              <p>
+                Ainda assim, o filme não escapa de limitações. Em alguns trechos, o roteiro acelera demais certas passagens e abre mão de aprofundar relações e acontecimentos que mereciam mais espaço. Falta, em alguns momentos, respirar melhor as cenas e deixar que certos vínculos amadureçam com mais peso. Esse recorte mais veloz impede que algumas camadas emocionais alcancem toda a potência que prometem. Ao mesmo tempo, curiosamente, essa falta gera uma sensação de querer mais, como se o filme deixasse claro que há ainda muito a ser explorado naquela trajetória.
+              </p>
+
+              <p>
+                No fim, “Michael” funciona porque entende que contar a história de Michael Jackson não é apenas montar uma sucessão de sucessos, traumas e marcos da carreira. É mostrar como um menino pressionado, ferido e obstinado conseguiu transformar dor em arte e ambição em permanência. E talvez seja exatamente por isso que o título baste por si só. “Michael” não é apenas o nome do homem no centro da narrativa. É o nome de alguém que ultrapassou a condição de estrela para se tornar símbolo.
+              </p>
+            </div>
+
+            <p class="note">
+              Ficha técnica montada com base em catálogos públicos consultados em abril de 2026. A disponibilidade em streaming pode mudar com o tempo.
+            </p>
+          </section>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 THUCCINE — Portal de críticas de cinema.
+    </div>
+  </footer>
+</body>
+</html>
